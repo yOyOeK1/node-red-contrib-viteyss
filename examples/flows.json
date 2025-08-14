@@ -1,0 +1,104 @@
+[
+    {
+        "id": "1a94e0e538414a62",
+        "type": "inject",
+        "z": "ec80202b42449d4a",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "and/mag",
+        "payload": "10",
+        "payloadType": "num",
+        "x": 120,
+        "y": 100,
+        "wires": [
+            [
+                "f359ecbadfce4cc9"
+            ]
+        ]
+    },
+    {
+        "id": "8cba6c4edbe475f6",
+        "type": "debug",
+        "z": "ec80202b42449d4a",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 490,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "f359ecbadfce4cc9",
+        "type": "viteyss-instance",
+        "z": "ec80202b42449d4a",
+        "name": "Vanilla",
+        "server": "a9fe9b4f4dc9f552",
+        "x": 330,
+        "y": 180,
+        "wires": [
+            [
+                "8cba6c4edbe475f6"
+            ]
+        ]
+    },
+    {
+        "id": "0feecf5b9f3f61be",
+        "type": "inject",
+        "z": "ec80202b42449d4a",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "and/mag",
+        "payload": "10",
+        "payloadType": "num",
+        "x": 110,
+        "y": 140,
+        "wires": [
+            [
+                "f359ecbadfce4cc9"
+            ]
+        ]
+    },
+    {
+        "id": "a9fe9b4f4dc9f552",
+        "type": "viteyss-config",
+        "iname": "Out of the box",
+        "host": "localhost",
+        "port": "8083",
+        "wshost": "localhost",
+        "wsport": "3999",
+        "pathstosites": "",
+        "pathtoyss": "",
+        "ysswsurl": "ws://localhost:3999/",
+        "sitesopts": "plugins,node-yss,viteyss/sites,node-red,home"
+    }
+]

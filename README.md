@@ -6,18 +6,21 @@
 
 - Node-red
 - viteyss
-- 
+- mnodehttp
+- node-yss
 
 ### installation
 
-* Manual way. In terminal
+* Manual way.
+  Be shure that your Node-Red is stop. In terminal go to directory of your `.node-red` 
 
 ```bash
 cd ~/.node-red
-TODO npm i https://github.com/yOyOeK1/node-red-contrib-mnodehttp/raw/refs/heads/main/node-red-contrib-mnodehttp-latest.tgz
+npm i https://github.com/yOyOeK1/node-red-contrib-viteyss.git
+npm i @rollup/rollup-linux-x64-gnu
 ```
 
-* After this restart *node-red* service icon of node will be in node list
+* After this start *Node-Red* service. Icon of node will be in node list
 
 ![](resources/node_in_list.png)
 
@@ -31,7 +34,21 @@ TODO npm i https://github.com/yOyOeK1/node-red-contrib-mnodehttp/raw/refs/heads/
 
 Use `local wiki` host by your instance to start exploring **sites**
 
-[you local wiki](http://localhost:8083/yss/index.html#pageByName=Wiki)
+http://localhost:8083/yss/index.html#pageByName=Wiki
+
+
+
+
+### example flow
+
+In Node-Red you can import `example/flows.json` file to see it set up and running. You can import file as `cunnernt flow` or `new flow`
+
+![](./examples/exampleFlow.png)
+
+[json file to download ...](./examples/flows.json)
+
+
+
 
 
 
