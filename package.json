@@ -25,7 +25,7 @@
     "postpack": "cp './'$npm_package_name'-'$npm_package_version'.tgz' './'$npm_package_name'-latest.tgz' ;exit 0"
   },
   "dependencies": {
-    "node-yss": "file:../node-yss",
-    "viteyss": "file:../viteyss"
+    "node-yss": "https://github.com/yOyOeK1/node-yss.git",
+    "viteyss": "https://github.com/yOyOeK1/viteyss.git"
   }
 }
