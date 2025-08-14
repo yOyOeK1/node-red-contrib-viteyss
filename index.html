@@ -1,0 +1,141 @@
+
+<script type="text/html" data-template-name="viteyss-config">
+    <div class="form-row">
+        <label for="node-config-input-iname">Name</label>
+        <input type="text" id="node-config-input-iname">
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-host">Http bind</label>
+        <input type="text" id="node-config-input-host" style="width:30%"> : 
+        <input type="text" id="node-config-input-port" style="width:10%">
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-wshost">WebSocket bind</label>
+        <input type="text" id="node-config-input-wshost" style="width:30%"> :
+        <input type="text" id="node-config-input-wsport" style="width:10%">
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-pathtoyss">Path to yss</label>
+        <input type="text" id="node-config-input-pathtoyss"><br>
+        <small>live blank so will use node-yss</small>
+    </div>
+
+    <div class="form-row">
+        <label for="node-config-input-sitesopts">Sites source</label>
+        <input type="text" id="node-config-input-sitesopts"><br>
+        <small>so it will add it to sites collection so serve</small>
+    </div>
+
+    <div class="form-row">
+        <label for="node-config-input-pathstosites">Other sites sources</label>
+        <input type="text" id="node-config-input-pathstosites"><br>
+        <small>Separator is ","</small>
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-ysswsurl">WS visible at</label>
+        <input type="text" id="node-config-input-ysswsurl">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="viteyss-config">
+    is help
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('viteyss-config',{
+        category: 'config',
+        defaults: {
+            iname: {value:""},
+            host: {value:"localhost",required:true},
+            port: {value:8083,required:true},
+            wshost: {value:"localhost",required:true},
+            wsport: {value:3999,required:true},
+            pathstosites: {value:""},
+            pathtoyss: {value:""},
+            ysswsurl: {value:"ws://localhost:3999/", required:true},
+            sitesopts: {value: ["plugins","node-yss","viteyss/sites","node-red","home"]},
+            
+        },
+        label: function() {
+            return this.iname+' '+this.host+":"+this.port;
+        },
+        getOnlyIname: function(){
+            return this.iname||'not set';
+        },
+        oneditprepare: function(){
+            $("#node-config-input-sitesopts").typedInput({
+                types: [
+                    {
+                        value: ["plugins","node-yss","viteyss/sites","node-red","home"],
+                        multiple: "true",
+                        options: [
+                            { value: "plugins", label: "plugins viteyss-site-..." },
+                            { value: "node-yss", label: "node-yss / sites" },
+                            { value: "viteyss/sites", label: "viteyss / sites" },
+                            { value: "node-red", label: "[~/.node-red]/sites" },
+                            { value: "home", label: "~/.viteyss/sites" },
+
+                            /*{ value: "apple", label: "Apple"},
+                            { value: "banana", label: "Banana"},
+                            { value: "cherry", label: "Cherry"},*/
+                        ]
+                    }
+                ]
+            });
+            $("#node-config-input-sitesopts").typedInput('value',["plugins","node-yss","viteyss/sites","node-red","home"]);
+        },
+
+    });
+</script>
+
+
+<script type="text/javascript">
+    RED.nodes.registerType('viteyss-instance',{
+        category: 'ot',
+        defaults: {
+            name: { value:"" },
+            server: { 
+                //value:""//
+                type:"viteyss-config" 
+            }
+        },
+        icon: "ico_viteyss_32.png",
+        inputs: 1,
+        outputs: 1,
+        label: function() {
+            //console.log('this.config.serer------------------------------');
+            //console.log('this.config.serer',this.config);
+            return this.name || this.server.getIname() |this.iname || "viteyss - [no name]";
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="viteyss-instance">
+    <div class="form-row">
+        <label for="node-input-name">Name</label>
+        <input type="text" id="node-input-name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-server">Server settings</label>
+        <input type="text" id="node-input-server">
+    </div>
+    
+</script>
+
+<script type="text/html" data-help-name="viteyss-instance">
+    <p>Wrapper for viteyss. It hosts yss. <br>
+        - <a href="https://github.com/yOyOeK1/viteyss/tree/main/wikiSites">small wiki link ...</a><br><br>
+
+        - <a href="https://github.com/yOyOeK1/viteyss">viteyss link ...</a><br>
+        - <a href="https://github.com/yOyOeK1/oiyshTerminal/wiki/otdm-yss">Wiki otdm-yss link ...</a><br>
+        - <a href="https://github.com/yOyOeK1/oiyshTerminal/wiki/otdm-yss#otdm-family">yss-* (family) ...</a>
+    </p>
+    <img src="resources/node-red-contrib-viteyss/ico_viteyss_32.png"><br>
+    <br>
+    <hr>
+If you see that this makes sense [ <a href="https://ko-fi.com/B0B0DFYGS">send me a ☕</a> ] | 
+[Master repository](https://github.com/yOyOeK1/oiyshTerminal) | 
+[About SvOiysh](https://www.youtube.com/@svoiysh)
+
+
+</script>

@@ -1,0 +1,31 @@
+{
+  "name": "node-red-contrib-viteyss",
+  "version": "0.0.1",
+  "license": "MIT",
+  "author": "Bartlomiej Ceglik <yoyoek@wp.pl>",
+  "description": "Node-red wrapper to viteyss",
+  "keywords": [
+    "oiyshTerminal",
+    "yss",
+    "viteyss",
+    "viteyss-sites",
+    "node-red",
+    "iot"
+  ],
+  "homepage": "https://github.com/yOyOeK1/node-red-contrib-viteyss",
+  "node-red": {
+    "nodes": {
+      "doit": "index.js"
+    }
+  },
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "mkPackage": "npm pack",
+    "postpack": "cp './'$npm_package_name'-'$npm_package_version'.tgz' './'$npm_package_name'-latest.tgz' ;exit 0"
+  },
+  "dependencies": {
+    "node-yss": "file:../node-yss",
+    "viteyss": "file:../viteyss"
+  }
+}
