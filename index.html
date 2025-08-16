@@ -5,7 +5,22 @@
         <input type="text" id="node-config-input-iname">
     </div>
     <div class="form-row">
-        <label for="node-config-input-host">Http bind</label>
+        <label for="node-config-input-hostpublicip">Host public ip</label>
+        <input type="text" id="node-config-input-hostpublicip" style="width:30%">
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-runhttps">
+            <i class="fa fa-tag"></i> 
+            As ssl
+        </label>
+        <input type="checkbox" id="node-config-input-runhttps" 
+            placeholder="as https and wss ..." 
+            style="margin-left: 10px; vertical-align: text-bottom; width: auto;"
+            >
+
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-host">Http(s) bind</label>
         <input type="text" id="node-config-input-host" style="width:30%"> : 
         <input type="text" id="node-config-input-port" style="width:10%">
     </div>
@@ -31,10 +46,12 @@
         <input type="text" id="node-config-input-pathstosites"><br>
         <small>Separator is ","</small>
     </div>
-    <div class="form-row">
-        <label for="node-config-input-ysswsurl">WS visible at</label>
-        <input type="text" id="node-config-input-ysswsurl">
-    </div>
+    <!--
+        <div class="form-row">
+            <label for="node-config-input-ysswsurl">WS visible at</label>
+            <input type="text" id="node-config-input-ysswsurl">
+        </div>
+        -->
 </script>
 
 <script type="text/html" data-help-name="viteyss-config">
@@ -46,13 +63,15 @@
         category: 'config',
         defaults: {
             iname: {value:""},
+            hostpublicip: { value: "localhost" },
+            runhttps: { value: false },
             host: {value:"localhost",required:true},
             port: {value:8083,required:true},
             wshost: {value:"localhost",required:true},
             wsport: {value:3999,required:true},
             pathstosites: {value:""},
             pathtoyss: {value:""},
-            ysswsurl: {value:"ws://localhost:3999/", required:true},
+            //ysswsurl: {value:"ws://localhost:3999/", required:true},
             sitesopts: {value: ["plugins","node-yss","viteyss/sites","node-red","home"]},
             
         },

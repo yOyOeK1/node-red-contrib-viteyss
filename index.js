@@ -158,7 +158,9 @@ module.exports = function(RED) {
                 let pathToYss = nconf.pathtoyss == ''? path.join( nysspath ,"yss" ) : nconf.pathtoyss;
 
                
+                let hostPublicIp = nconf.hostpublicip;
                 var config0 = {
+                    'https': nconf.runhttps,
                     'name': nconf.iname,
                     'HOST': nconf.host,
                     'PORT': nconf.port,
@@ -168,12 +170,17 @@ module.exports = function(RED) {
                     'pathsToSites': pathsToSites,    
                     //'wsInjection': false,
                     'wsInjection': true,
-                    'yssWSUrl': nconf.ysswsurl,
                     
                     'sitesInjection': true,
                     'ws': undefined,
                     'wsPinger': true
                 };
+
+                if( nconf.runhttps == true ){
+                    config0['yssWSUrl'] = `wss://${hostPublicIp}:${config0.PORT}/fooWSS`;
+                } else {
+                    config0['yssWSUrl'] = `ws://${hostPublicIp}:${config0.wsPORT}`;
+                }
                 
                 sc0 = new serCon.serverContainerVite(0, config0, wsCallBack );
                 try{
@@ -210,13 +217,15 @@ module.exports = function(RED) {
         //console.log('mconfig ',n);
         this.id = n.id;
         this.iname = n.iname;
+        this.hostpublicip = n.hostpublicip;
+        this.runhttps = n.runhttps;
         this.host = n.host;
         this.port = n.port;
         this.wshost = n.wshost;
         this.wsport = n.wsport;
         this.pathstosites = n.pathstosites;
         this.pathtoyss = n.pathtoyss;
-        this.ysswsurl = n.ysswsurl;
+        //this.ysswsurl = n.ysswsurl;
         this.sitesopts = n.sitesopts;
 
         function getIname(){
