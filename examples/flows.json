@@ -1,8 +1,22 @@
 [
     {
-        "id": "1a94e0e538414a62",
+        "id": "83c8b65cc19fef1b",
+        "type": "viteyss-instance",
+        "z": "5019223acfcf272b",
+        "name": "vanillaInst",
+        "server": "4acaf08af1b814e9",
+        "x": 360,
+        "y": 120,
+        "wires": [
+            [
+                "51c6b3845d834832"
+            ]
+        ]
+    },
+    {
+        "id": "cba7360a9083f942",
         "type": "inject",
-        "z": "ec80202b42449d4a",
+        "z": "5019223acfcf272b",
         "name": "",
         "props": [
             {
@@ -20,18 +34,49 @@
         "topic": "and/mag",
         "payload": "10",
         "payloadType": "num",
-        "x": 120,
+        "x": 150,
         "y": 100,
         "wires": [
             [
-                "f359ecbadfce4cc9"
+                "83c8b65cc19fef1b",
+                "f7f5504b6eec4e72"
             ]
         ]
     },
     {
-        "id": "8cba6c4edbe475f6",
+        "id": "d0509cad55ccd0f7",
+        "type": "inject",
+        "z": "5019223acfcf272b",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "and/mag",
+        "payload": "20",
+        "payloadType": "num",
+        "x": 150,
+        "y": 140,
+        "wires": [
+            [
+                "83c8b65cc19fef1b",
+                "f7f5504b6eec4e72"
+            ]
+        ]
+    },
+    {
+        "id": "51c6b3845d834832",
         "type": "debug",
-        "z": "ec80202b42449d4a",
+        "z": "5019223acfcf272b",
         "name": "",
         "active": true,
         "tosidebar": true,
@@ -41,64 +86,22 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 490,
-        "y": 220,
+        "x": 510,
+        "y": 200,
         "wires": []
     },
     {
-        "id": "f359ecbadfce4cc9",
-        "type": "viteyss-instance",
-        "z": "ec80202b42449d4a",
-        "name": "Vanilla",
-        "server": "a9fe9b4f4dc9f552",
-        "x": 330,
-        "y": 180,
-        "wires": [
-            [
-                "8cba6c4edbe475f6"
-            ]
-        ]
-    },
-    {
-        "id": "0feecf5b9f3f61be",
-        "type": "inject",
-        "z": "ec80202b42449d4a",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "and/mag",
-        "payload": "10",
-        "payloadType": "num",
-        "x": 110,
-        "y": 140,
-        "wires": [
-            [
-                "f359ecbadfce4cc9"
-            ]
-        ]
-    },
-    {
-        "id": "a9fe9b4f4dc9f552",
+        "id": "4acaf08af1b814e9",
         "type": "viteyss-config",
-        "iname": "Out of the box",
+        "iname": "vanilla",
+        "hostpublicip": "localhost",
+        "runhttps": false,
         "host": "localhost",
         "port": "8083",
         "wshost": "localhost",
         "wsport": "3999",
         "pathstosites": "",
         "pathtoyss": "",
-        "ysswsurl": "ws://localhost:3999/",
         "sitesopts": "plugins,node-yss,viteyss/sites,node-red,home"
     }
 ]

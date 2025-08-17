@@ -10,7 +10,6 @@
     </div>
     <div class="form-row">
         <label for="node-config-input-runhttps">
-            <i class="fa fa-tag"></i> 
             As ssl
         </label>
         <input type="checkbox" id="node-config-input-runhttps" 
@@ -44,7 +43,7 @@
     <div class="form-row">
         <label for="node-config-input-pathstosites">Other sites sources</label>
         <input type="text" id="node-config-input-pathstosites"><br>
-        <small>Separator is ","</small>
+        <small>separator for paths is ","</small>
     </div>
     <!--
         <div class="form-row">
@@ -76,7 +75,7 @@
             
         },
         label: function() {
-            return this.iname+' '+this.host+":"+this.port;
+            return this.iname+' '+(this.runhttps?'(s) ':'')+this.host+":"+this.port;
         },
         getOnlyIname: function(){
             return this.iname||'not set';

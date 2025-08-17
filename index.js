@@ -99,7 +99,10 @@ module.exports = function(RED) {
 
         function mkServer(){
             if( nconf.host ){
-                node.status({'text':'running ...', fill:"green"});
+                node.status({
+                    'text':'running..'+(nconf.runhttps?'(s)':'')+' :'+nconf.port, 
+                    fill:"green"
+                });
                 var serCon = require('viteyss/serverContainerVite');
                 var path = require("path");
                 var nyss = require('node-yss');
