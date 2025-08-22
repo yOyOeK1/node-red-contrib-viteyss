@@ -208,7 +208,21 @@ module.exports = function(RED) {
 
         node.on('input', function(msg) {
             //cl("on input ....");
-            sws.sendToAll( ws, JSON.stringify(msg));
+            if( msg.rawMsg != undefined && msg.payload ){
+                console.log('rawMsg ',msg.payload);
+                res = sc0.onWsMessage({
+                    'send': (str)=>{
+                        node.send({
+                            'topic':'rawMsgBack',
+                            'payload':str
+                        });
+                    }
+                }, 'on_message', msg.payload);
+
+
+            } else {   
+                sws.sendToAll( ws, JSON.stringify(msg));
+            }
             if( status != 'ok' )
                 node.send({'error':status});
         });

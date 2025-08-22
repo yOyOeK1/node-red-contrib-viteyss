@@ -1,0 +1,68 @@
+[
+    {
+        "id": "6540d04c00e63aca",
+        "type": "inject",
+        "z": "5019223acfcf272b",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "rawMsg",
+                "v": "",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "wsGetClients:",
+        "payloadType": "str",
+        "x": 1130,
+        "y": 1120,
+        "wires": [
+            [
+                "f7f5504b6eec4e72"
+            ]
+        ]
+    },
+    {
+        "id": "f72310f6e45ae982",
+        "type": "function",
+        "z": "5019223acfcf272b",
+        "name": "msg.topic == 'rawMsgBack'",
+        "func": "if( msg.topic == 'rawMsgBack' ){\n    return JSON.parse(msg.payload);\n    \n}",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1680,
+        "y": 1120,
+        "wires": [
+            [
+                "59fb8d0f370e3761"
+            ]
+        ]
+    },
+    {
+        "id": "59fb8d0f370e3761",
+        "type": "debug",
+        "z": "5019223acfcf272b",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1870,
+        "y": 1200,
+        "wires": []
+    }
+]
