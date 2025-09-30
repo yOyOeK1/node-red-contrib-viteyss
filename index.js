@@ -136,17 +136,28 @@ module.exports = function(RED) {
                     // if you have `~/.viteyss/sites
                     pathsToSites.push( path.join( process.env.HOME, '.viteyss', 'sites' ) );
                 }
+                var pathToSitesPackages = [];
                 if( sOpts.indexOf('plugins') != -1 ){
                     // sites ass a plugins `viteyss-site-`
-                    var { vysPlugins, pcNpmls } = require('viteyss/startItAsPluginColector');
+                    var { vysPlugins, pcNpmls, vysPluginRuning } = require('viteyss/startItAsPluginColector');
+
+
+                    
+
                     if( 1 ){
-                        pcNpmls();
-                        console.log("---------------------",
+                        let resOfPc = pcNpmls();
+                        console.log("---------------------res pc:["+resOfPc+"]",
                             "vysPlugins",vysPlugins
                         );
                         if( Object.keys( vysPlugins ).length > 0 ){
                             Object.keys( vysPlugins ).forEach((pkey)=>{
                                 pathsToSites.push( vysPlugins[pkey].pathTo );
+                                // add path to sites from packages 
+                                let ptp = {
+                                    "package":vysPlugins[pkey].package,
+                                    "pathTo":vysPlugins[pkey].pathTo
+                                };
+                                pathToSitesPackages.push( ptp );
                             });
                         }
                     }
@@ -170,7 +181,8 @@ module.exports = function(RED) {
                     'wsHOST': nconf.wshost,
                     'wsPORT': nconf.wsport,
                     'pathToYss': pathToYss,
-                    'pathsToSites': pathsToSites,    
+                    'pathsToSites': pathsToSites,  
+                    "pathsToSitesPackages": pathToSitesPackages,  
                     //'wsInjection': false,
                     'wsInjection': true,
                     
