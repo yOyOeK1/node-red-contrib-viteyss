@@ -114,7 +114,7 @@ module.exports = function(RED) {
 
 
                 
-                let sOpts = nconf.sitesopts.split(',');
+                let sOpts = nconf.sitesopts;
                 var pathsToSites = [
                     // dev 
                     //'/home/yoyo/Apps/oiyshTerminal/ySS_calibration/sites',
